@@ -3,7 +3,10 @@
 @apiVersion = 1.0
 @language = en-US
 
-@subscriptionKey = key
+# Set subscription-key either here OR in the .vscode/settings.json
+# See documentation for more details (under "Environment Variables"):
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+# @subscriptionKey = key
 
 ### Get Search POI
 # https://docs.microsoft.com/en-us/rest/api/maps/search/getsearchpoi
