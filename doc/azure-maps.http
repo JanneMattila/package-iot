@@ -13,3 +13,9 @@
 # @name searchpois
 @query = eiffel
 GET {{endpoint}}/search/poi/json?api-version={{apiVersion}}&query={{query}}&language={{language}}&subscription-key={{subscriptionKey}} HTTP/1.1
+
+### Get Route Directions
+# https://docs.microsoft.com/en-us/rest/api/maps/route/getroutedirections
+# @name routedirections
+@query = 52.50931,13.42936:52.50274,13.43872
+GET {{endpoint}}/route/directions/json?api-version={{apiVersion}}&query={{query}}&language={{language}}&subscription-key={{subscriptionKey}} HTTP/1.1
