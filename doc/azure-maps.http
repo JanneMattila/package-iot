@@ -1,0 +1,12 @@
+@endpoint = https://atlas.microsoft.com
+
+@apiVersion = 1.0
+@language = en-US
+
+@subscriptionKey = key
+
+### Get Search POI
+# https://docs.microsoft.com/en-us/rest/api/maps/search/getsearchpoi
+# @name searchpois
+@query = eiffel
+GET {{endpoint}}/search/poi/json?api-version={{apiVersion}}&query={{query}}&language={{language}}&subscription-key={{subscriptionKey}} HTTP/1.1
