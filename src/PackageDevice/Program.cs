@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
+using PackageDevice.Interfaces;
 using System;
+using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace PackageDevice
@@ -21,10 +24,21 @@ namespace PackageDevice
 
             var configuration = builder.Build();
 
-            var connectionString = configuration.GetValue<string>("ConnectionString");
-
-            var packageDeviceManager = new PackageDeviceManager(connectionString);
+            var iotHubConnectionString = configuration.GetValue<string>("IoTHubConnectionString");
+            var packageDeviceManager = new PackageDeviceManager(iotHubConnectionString);
             await packageDeviceManager.SendD2CAsync();
+
+            var azureMapsSubscriptionKey = configuration.GetValue<string>("AzureMapsSubscriptionKey");
+            var routeFrom = configuration.GetValue<string>("RouteFrom");
+            var routeTo = configuration.GetValue<string>("RouteTo");
+            var query = $"{routeFrom}:{routeTo}";
+            var requestUri = $"https://atlas.microsoft.com/route/directions/json?api-version=1.0&query={query}&language=en-US&subscription-key={azureMapsSubscriptionKey}";
+
+            using var client = new HttpClient();
+            var json = await client.GetStringAsync(requestUri);
+            var routeData = JsonSerializer.Deserialize<RouteData>(json);
+
+            packageDeviceManager.StartRoute(routeData);
         }
     }
 }

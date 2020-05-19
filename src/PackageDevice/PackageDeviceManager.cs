@@ -25,5 +25,9 @@ namespace PackageDevice
 
             await _deviceClient.SendEventAsync(message);
         }
+
+        public void StartRoute(RouteData routeData)
+        {
+        }
     }
 }
