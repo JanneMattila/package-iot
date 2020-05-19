@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="650px" height="441px" viewBox="-0.5 -0.5 650 441" content="&lt;mxfile host=&quot;localhost&quot; modified=&quot;2020-05-19T10:09:22.497Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.45.1 Chrome/78.0.3904.130 Electron/7.2.4 Safari/537.36&quot; etag=&quot;_L1ebWHlJ0mMLwhBASG-&quot; version=&quot;13.0.9&quot;&gt;&lt;diagram id=&quot;6hGFLwfOUW9BJ-s0fimq&quot; name=&quot;Architecture&quot;&gt;3Zhbb5swFMc/DdL2kCpACOljLu06aZWiZtLaRwccYtVgZEwu/fQ7DjYXQ9q0Sy9aX2r/OcfYf/+A41juNN794Chd37IQU8vphzvLnVmOYzueA/+ksi8U3/cKIeIkVEGVsCBPWIl9peYkxFkjUDBGBUmbYsCSBAeioSHO2bYZtmK0edcURbglLAJE2+ofEop1oY4cv9JvMInW+s728LK4EiMdrFaSrVHItjXJvbLcKWdMFK14N8VUmqd9KfKuj1wtJ8ZxIk5JUBuxQTRXa/vJfoNwky/VBMVer5qzPAmxTLQtd7JdE4EXKQrk1S3sM2hrEVN1WY2LucC7o3OzyxUDKpjFWPA9hKgEd6So2GtulGnbyvNSW9f8HioNqW2OyqErJ6ChzOg2xm0ZM0fBo+TC6RcWzfCGwOK/mkuu+4EuDVouWc6QCrlImPUwkq1jvhVxcIcqVIupFnRsn8QpxTFYkhXPK2VbkkTQpiwigeWOa+OlR4d7LohRU6FEK2IZ1lIrvSa201+4q4ENACCabGSCs0c8ZZRxUBKWQORkRSg1pAzokl64M6/q/WZA2qwH+97NIAPmVvTw5lmTMMQJaBW5/TOh6fUbaA460HQdr41myeu/sOm12CxpmnO2IRlhScHQAnN14dtsvvj+6Y+05zcfafDj4x7pYccjbfiBk3Asv6LQCyjKMvkA1i3AOyLua+0HhZRsz3b1zl53Epjlfb3zoPNlp0o69HRWMTEctj7WhtEweZbzADfe7ALxCIsaKu3tqNntdbitNY4pEmTTnETXFqg7zBmB6ZW7PTR2e2DCX0xeZdW/5cZAvmN8CXxjoGLJrYEORJTLPgkS/42QZDAF8Tw7JQkX3mtY0MyptJOoOxs/zmfyM3INfsxtP5Wf0egFEM/Hz+gMLxkNiv0mTOqQXDjeO3DifTFOfJMT+63vGbPiND875+PkssXJDfjSo3hzOFFuCN5++tfaHvgNOz70mKL3sObQOBBQHpquwEEzlc08pkWAO5GrJnCo/YWWmM5ZRgRURBCyZEKwWBbA8sIEyvfo4KmuOy3HXR3+amOMKYlkrmCGwSwXlCRQxuqT+JlqS9N0u6O0fC/P7Zbn1xiJnMufJMqDyJLrWr8HsXcY0Z4gMS6p7edpiASW55k8K+rQ8ROMIetR8BLRu3pl2jXmLcBcjsZWsq41jlrhoeDtugXkZu1RW9T8j6eSyyY5Tv/EQ4n3enSgW/2UU7z+qh/E3Ku/&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="338" y="10" width="120" height="60" rx="9" ry="9" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 40px; margin-left: 339px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                IoT Hub
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="398" y="44" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    IoT Hub
+                </text>
+            </switch>
+        </g>
+        <rect x="338" y="220" width="120" height="60" rx="9" ry="9" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 250px; margin-left: 339px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                Package IoT Device
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="398" y="254" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Package IoT Device
+                </text>
+            </switch>
+        </g>
+        <rect x="303" y="320" width="325" height="120" fill="none" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 317px; height: 1px; padding-top: 310px; margin-left: 308px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 130px; overflow: hidden; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                <h1>
+                                    Package IoT Device
+                                </h1>
+                                <p>
+                                    Device implements following logic:
+                                </p>
+                                <p></p>
+                                <ol>
+                                    <li>
+                                        tbd
+                                    </li>
+                                </ol>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="308" y="322" fill="#000000" font-family="Helvetica" font-size="12px">
+                    Package IoT Device...
+                </text>
+            </switch>
+        </g>
+        <rect x="528" y="102" width="120" height="60" rx="9" ry="9" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 132px; margin-left: 529px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                Device Provisioning Service (DPS)
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="588" y="136" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Device Provisioning...
+                </text>
+            </switch>
+        </g>
+        <path d="M 458 220 L 523.1 166.06" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 527.14 162.71 L 523.98 169.87 L 523.1 166.06 L 519.52 164.48 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 398 213.63 L 398 76.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 398 218.88 L 394.5 211.88 L 398 213.63 L 401.5 211.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 398 71.12 L 401.5 78.12 L 398 76.37 L 394.5 78.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 528 117 L 463.29 73.55" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 458.93 70.62 L 466.69 71.62 L 463.29 73.55 L 462.79 77.43 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="100" y="10" width="120" height="60" rx="9" ry="9" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 40px; margin-left: 101px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                High-level view
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="160" y="44" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    High-level view
+                </text>
+            </switch>
+        </g>
+        <ellipse cx="15" cy="7.5" rx="7.5" ry="7.5" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <path d="M 15 15 L 15 40 M 15 20 L 0 20 M 15 20 L 30 20 M 15 40 L 0 60 M 15 40 L 30 60" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 67px; margin-left: 15px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; background-color: #ffffff; white-space: nowrap; ">
+                                Actor
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="15" y="79" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Actor
+                </text>
+            </switch>
+        </g>
+        <rect x="50" y="90" width="325" height="50" fill="none" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 317px; height: 1px; padding-top: 80px; margin-left: 55px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: left; max-height: 60px; overflow: hidden; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                Features:
+                                <br/>
+                                - Real-time view updates using Azure SignalR Service
+                                <br/>
+                                - Map view of Package IoT devices using Azure Maps
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="55" y="92" fill="#000000" font-family="Helvetica" font-size="12px">
+                    Features:...
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://desk.draw.io/support/solutions/articles/16000042487" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>
