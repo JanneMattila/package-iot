@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using PackageDevice.Interfaces;
 using System;
+using System.IO;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -13,14 +14,15 @@ namespace PackageDevice
         {
             Console.WriteLine("Package Device started");
 
+            var path = Path.Combine(AppContext.BaseDirectory, "configs");
             var builder = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
+                .AddKeyPerFile(directoryPath: path, optional: true)
+#if DEBUG
+                .AddUserSecrets<Program>()
+#endif
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
-
-#if DEBUG
-            builder.AddUserSecrets<Program>();
-#endif
 
             var configuration = builder.Build();
 
