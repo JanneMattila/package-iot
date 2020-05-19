@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace PackageDevice
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Package Device started");
+
+            var packageDeviceManager = new PackageDeviceManager("");
+            await packageDeviceManager.SendD2CAsync();
         }
     }
 }
