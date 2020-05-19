@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Threading.Tasks;
 
 namespace PackageDevice
@@ -9,7 +10,20 @@ namespace PackageDevice
         {
             Console.WriteLine("Package Device started");
 
-            var packageDeviceManager = new PackageDeviceManager("");
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(AppContext.BaseDirectory)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables();
+
+#if DEBUG
+            builder.AddUserSecrets<Program>();
+#endif
+
+            var configuration = builder.Build();
+
+            var connectionString = configuration.GetValue<string>("ConnectionString");
+
+            var packageDeviceManager = new PackageDeviceManager(connectionString);
             await packageDeviceManager.SendD2CAsync();
         }
     }
