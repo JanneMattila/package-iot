@@ -19,7 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit", "unit", "{02227113-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "release", "release", "{D572B1A0-5190-4021-9126-32076F2D07F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageDevice", "src\PackageDevice\PackageDevice.csproj", "{6D21ECA4-8EE2-46B1-AA5C-482F2EB161CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageDevice", "src\PackageDevice\PackageDevice.csproj", "{6D21ECA4-8EE2-46B1-AA5C-482F2EB161CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "src\WebApp\WebApp.csproj", "{62394C6D-48F1-4032-B828-40DB3D46B810}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{6D21ECA4-8EE2-46B1-AA5C-482F2EB161CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D21ECA4-8EE2-46B1-AA5C-482F2EB161CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D21ECA4-8EE2-46B1-AA5C-482F2EB161CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62394C6D-48F1-4032-B828-40DB3D46B810}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62394C6D-48F1-4032-B828-40DB3D46B810}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62394C6D-48F1-4032-B828-40DB3D46B810}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62394C6D-48F1-4032-B828-40DB3D46B810}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{02227113-FA18-499C-A88A-CF5B03250602} = {7D7BED22-8D53-487F-946F-BD5092C7BAE2}
 		{D572B1A0-5190-4021-9126-32076F2D07F4} = {7D7BED22-8D53-487F-946F-BD5092C7BAE2}
 		{6D21ECA4-8EE2-46B1-AA5C-482F2EB161CE} = {4EF08C94-B952-4183-8D20-7036E5FD2661}
+		{62394C6D-48F1-4032-B828-40DB3D46B810} = {4EF08C94-B952-4183-8D20-7036E5FD2661}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C62476CF-78BF-4D36-8BE2-D57595CE6E16}
