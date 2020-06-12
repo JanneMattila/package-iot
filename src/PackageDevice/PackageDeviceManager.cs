@@ -64,14 +64,17 @@ namespace PackageDevice
                     Console.WriteLine($"Leg length: {legs.Summary.LengthInMeters} in meters");
                     Console.WriteLine($"Leg travel time: {legs.Summary.TravelTimeInSeconds} in seconds");
                     Console.WriteLine($"Leg points: {legs.Points.Count}");
+                    var stepTime = (legs.Summary.ArrivalTime - legs.Summary.DepartureTime) / legs.Points.Count;
+                    var progressTime = 0d;
                     foreach (var point in legs.Points)
                     {
                         movement.Current.Latitude = point.Latitude;
                         movement.Current.Longitude = point.Longitude;
-                        movement.Current.Timestamp = DateTimeOffset.UtcNow;
+                        movement.Current.Timestamp = legs.Summary.DepartureTime.AddMilliseconds(progressTime);
 
                         await SendMovementD2CAsync(movement, isMoving: true);
-                        await Task.Delay(TimeSpan.FromSeconds(1));
+                        await Task.Delay(TimeSpan.FromMilliseconds(stepTime.TotalMilliseconds));
+                        progressTime += stepTime.TotalMilliseconds;
                     }
                 }
             }

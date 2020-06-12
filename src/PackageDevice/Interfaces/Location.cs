@@ -16,7 +16,7 @@ namespace PackageDevice.Interfaces
 
         public override string ToString()
         {
-            return $"Latitude: {Latitude}, Longitude: {Longitude}, Timestamp: {Timestamp}";
+            return $"Latitude: {Latitude}, Longitude: {Longitude}, Timestamp: {Timestamp.ToLocalTime()}";
         }
     }
 }
