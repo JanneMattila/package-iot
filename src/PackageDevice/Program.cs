@@ -28,7 +28,6 @@ namespace PackageDevice
 
             var iotHubConnectionString = configuration.GetValue<string>("IoTHubConnectionString");
             var packageDeviceManager = new PackageDeviceManager(iotHubConnectionString);
-            await packageDeviceManager.SendD2CAsync();
 
             var azureMapsSubscriptionKey = configuration.GetValue<string>("AzureMapsSubscriptionKey");
             var routeFrom = configuration.GetValue<string>("RouteFrom");
@@ -40,7 +39,7 @@ namespace PackageDevice
             var json = await client.GetStringAsync(requestUri);
             var routeData = JsonSerializer.Deserialize<RouteData>(json);
 
-            packageDeviceManager.StartRoute(routeData);
+            await packageDeviceManager.StartRouteAsync(routeData);
         }
     }
 }

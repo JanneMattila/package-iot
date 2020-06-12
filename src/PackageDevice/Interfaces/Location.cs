@@ -13,5 +13,10 @@ namespace PackageDevice.Interfaces
 
         [JsonPropertyName("timestamp")]
         public DateTimeOffset Timestamp { get; set; }
+
+        public override string ToString()
+        {
+            return $"Latitude: {Latitude}, Longitude: {Longitude}, Timestamp: {Timestamp}";
+        }
     }
 }

@@ -12,5 +12,12 @@ namespace PackageDevice.Interfaces
 
         [JsonPropertyName("end")]
         public Location End { get; set; }
+
+        public PackageDeviceMovement()
+        {
+            Start = new Location();
+            Current = new Location();
+            End = new Location();
+        }
     }
 }
