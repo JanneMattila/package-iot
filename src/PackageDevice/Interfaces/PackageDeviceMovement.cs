@@ -10,6 +10,9 @@ public class PackageDeviceMovement
     [JsonPropertyName("current")]
     public Location Current { get; set; }
 
+    [JsonPropertyName("next")]
+    public Location Next { get; set; }
+
     [JsonPropertyName("end")]
     public Location End { get; set; }
 
@@ -17,6 +20,7 @@ public class PackageDeviceMovement
     {
         Start = new Location();
         Current = new Location();
+        Next = new Location();
         End = new Location();
     }
 }

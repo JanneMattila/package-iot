@@ -1,10 +1,11 @@
-﻿using System.Threading.Tasks;
-using WebApp.Models;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using WebApp.Interfaces;
 
 namespace WebApp.Hubs
 {
     public interface IDeliveryHub
     {
-        Task Echo(DeliveryModel deliveryModel);
+        Task UpdatePackages(List<PackageDeviceMovement> packageDeviceMovement);
     }
 }

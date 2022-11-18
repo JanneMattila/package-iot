@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Packages</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+
+    <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+
+    <script src="/lib/signalr/signalr.js"></script>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            font-family: segoeui;
+        }
+
+        #myMap {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="myMap"></div>
+
+    <script>
+        let packages = [];
+
+        function updatePackages(data) {
+            for (let i = 0; i < data.length; i++) {
+                let package = data[i];
+                console.log(package);
+
+                let currentPos = [package.current.lon, package.current.lat];
+                let nextPos = [package.next.lon, package.next.lat];
+                let targetPos = [package.end.lon, package.end.lat];
+                let distance = Math.floor(atlas.math.getDistanceTo(currentPos, targetPos, 'kilometers'));
+                let title = `Distance to target ${distance}km`;
+                let properties = {
+                    rotation: atlas.math.getHeading(currentPos, nextPos),
+                    title: title
+                };
+
+                var existingpackage = packages[package.id];
+                if (existingpackage == null) {
+                    existingpackage = package;
+                    console.log("new package");
+                    existingpackage.shape = new atlas.Shape(
+                        new atlas.data.Feature(
+                            new atlas.data.Point(currentPos), properties, package.id));
+                    packageDatasource.add(existingpackage.shape);
+                    packages[existingpackage.id] = existingpackage;
+                }
+                else {
+                    console.log("update to package");
+                    existingpackage.current = package.current;
+                    existingpackage.shape.setCoordinates(currentPos);
+                    existingpackage.shape.setProperties(properties);
+                }
+            }
+
+            setTimeout(animatepackages, 0, false);
+        }
+
+        function selectPopup(address) {
+            console.log(address);
+            packagePopup.close();
+        }
+
+        let protocol = new signalR.JsonHubProtocol();
+        let hubRoute = "Delivery";
+        let connection = new signalR.HubConnectionBuilder()
+            .withUrl(hubRoute)
+            .withAutomaticReconnect()
+            .withHubProtocol(protocol)
+            .build();
+
+        connection.on('UpdatePackages', updatePackages);
+        connection.onclose(() => console.log('disconnected'));
+        console.log('connecting...');
+        connection.start()
+            .then(() => console.log('connected!'))
+            .catch(console.error);
+
+        let packagePopup = new atlas.Popup();
+        let map, datasource, packageDatasource, client, popup;
+
+        map = new atlas.Map('myMap', {
+            style: "road_shaded_relief",
+            zoom: 1,
+            dragRotateInteraction: false,
+            authOptions: {
+                authType: 'subscriptionKey',
+                subscriptionKey: ""
+            }
+        });
+
+        var subscriptionKeyCredential = new atlas.service.SubscriptionKeyCredential(atlas.getSubscriptionKey());
+        var pipeline = atlas.service.MapsURL.newPipeline(subscriptionKeyCredential);
+
+        //Create a popup which we can reuse for each result.
+        popup = new atlas.Popup();
+
+        //Wait until the map resources are ready.
+        map.events.add('ready', function () {
+
+            //Create an array of custom icon promises to load into the map.
+            var iconPromises = [
+                map.imageSprite.add('package_icon', '/images/package.png'),
+            ];
+
+            //Add the zoom control to the map.
+            map.controls.add(new atlas.control.ZoomControl(), {
+                position: 'top-right'
+            });
+
+            //Load all the custom image icons into the map resources.
+            Promise.all(iconPromises).then(function () {
+                //Create a data source and add it to the map.
+                datasource = new atlas.source.DataSource();
+                packageDatasource = new atlas.source.DataSource();
+                map.sources.add(datasource);
+                map.sources.add(packageDatasource);
+
+                //Add a layer for rendering the results.
+                var searchLayer = new atlas.layer.SymbolLayer(datasource, null, {
+                    iconOptions: {
+                        image: 'pin-round-darkblue',
+                        anchor: 'center',
+                        allowOverlap: true
+                    }
+                });
+                map.layers.add(searchLayer);
+
+                var packageLayer = new atlas.layer.SymbolLayer(packageDatasource, null, {
+                    iconOptions: {
+                        image: 'package_icon',
+                        size: 0.5,
+                        anchor: 'center',
+                        rotation: ['get', 'rotation'],
+                        allowOverlap: true,
+                        ignorePlacement: true
+                    },
+                    textOptions: {
+                        anchor: 'center',
+                        offset: [0, 3],
+                        textField: ['get', 'title'],
+                        allowOverlap: true,
+                        ignorePlacement: true
+                    }
+                });
+                map.layers.add(packageLayer);
+
+                //Add a click event to the search layer and show a popup when a result is clicked.
+                map.events.add("click", searchLayer, function (e) {
+                    //Make sure the event occurred on a shape feature.
+                    if (e.shapes && e.shapes.length > 0) {
+                        showPopup(e.shapes[0]);
+                    }
+                });
+
+                fetch("/api/packages")
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log(`Fetched ${data.length} packages.`);
+                        if (data.length > 0) {
+                            updatePackages(data);
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            });
+
+            // Based on example: https://docs.microsoft.com/en-us/azure/azure-maps/map-get-information-from-coordinate
+            map.events.add("click", function (e) {
+
+                let position = [e.position[0], e.position[1]];
+            });
+        });
+
+    </script>
+</body>
+
+</html>
