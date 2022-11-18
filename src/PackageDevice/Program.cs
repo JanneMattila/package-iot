@@ -26,18 +26,29 @@ namespace PackageDevice
 
             var configuration = builder.Build();
 
-            var iotHubConnectionString = configuration.GetValue<string>("IoTHubConnectionString");
+            var iotHubConnectionString = configuration.GetValue<string>("IoTHubConnectionString") ?? string.Empty;
             var packageDeviceManager = new PackageDeviceManager(iotHubConnectionString);
 
             var azureMapsSubscriptionKey = configuration.GetValue<string>("AzureMapsSubscriptionKey");
             var routeFrom = configuration.GetValue<string>("RouteFrom");
             var routeTo = configuration.GetValue<string>("RouteTo");
-            var query = $"{routeFrom}:{routeTo}";
-            var requestUri = $"https://atlas.microsoft.com/route/directions/json?api-version=1.0&query={query}&language=en-US&subscription-key={azureMapsSubscriptionKey}";
 
-            using var client = new HttpClient();
-            var json = await client.GetStringAsync(requestUri);
-            var routeData = JsonSerializer.Deserialize<RouteData>(json);
+            RouteData routeData;
+            if (string.IsNullOrEmpty(routeFrom) && string.IsNullOrEmpty(routeFrom))
+            {
+                var exampleRoutes = Directory.GetFiles("ExampleRoutes");
+                var json = File.ReadAllText(exampleRoutes[0]);
+                routeData = JsonSerializer.Deserialize<RouteData>(json);
+            }
+            else
+            {
+                var query = $"{routeFrom}:{routeTo}";
+                var requestUri = $"https://atlas.microsoft.com/route/directions/json?api-version=1.0&query={query}&language=en-US&subscription-key={azureMapsSubscriptionKey}";
+
+                using var client = new HttpClient();
+                var json = await client.GetStringAsync(requestUri);
+                routeData = JsonSerializer.Deserialize<RouteData>(json);
+            }
 
             await packageDeviceManager.StartRouteAsync(routeData);
         }

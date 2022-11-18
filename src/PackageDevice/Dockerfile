@@ -1,7 +1,7 @@
-FROM mcr.microsoft.com/dotnet/core/runtime:3.1.3-alpine3.11 AS base
+FROM mcr.microsoft.com/dotnet/runtime:7.0.0-alpine3.16-amd64 AS base
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1.201-buster AS build
+FROM mcr.microsoft.com/dotnet/sdk:7.0.100-alpine3.16-amd64 AS build
 WORKDIR /src
 COPY "PackageDevice.csproj" .
 RUN dotnet restore "PackageDevice.csproj"

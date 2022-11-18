@@ -1,23 +1,22 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace PackageDevice.Interfaces
+namespace PackageDevice.Interfaces;
+
+public class PackageDeviceMovement
 {
-    public class PackageDeviceMovement
+    [JsonPropertyName("start")]
+    public Location Start { get; set; }
+
+    [JsonPropertyName("current")]
+    public Location Current { get; set; }
+
+    [JsonPropertyName("end")]
+    public Location End { get; set; }
+
+    public PackageDeviceMovement()
     {
-        [JsonPropertyName("start")]
-        public Location Start { get; set; }
-
-        [JsonPropertyName("current")]
-        public Location Current { get; set; }
-
-        [JsonPropertyName("end")]
-        public Location End { get; set; }
-
-        public PackageDeviceMovement()
-        {
-            Start = new Location();
-            Current = new Location();
-            End = new Location();
-        }
+        Start = new Location();
+        Current = new Location();
+        End = new Location();
     }
 }

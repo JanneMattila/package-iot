@@ -11,10 +11,18 @@ namespace PackageDevice
     public class PackageDeviceManager
     {
         private readonly DeviceClient _deviceClient;
+        private bool _isLocalOnly;
 
         public PackageDeviceManager(string connectionString)
         {
-            _deviceClient = DeviceClient.CreateFromConnectionString(connectionString, TransportType.Mqtt);
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                _isLocalOnly = true;
+            }
+            else
+            {
+                _deviceClient = DeviceClient.CreateFromConnectionString(connectionString, TransportType.Mqtt);
+            }
         }
 
         public async Task SendMovementD2CAsync(PackageDeviceMovement movement, bool isMoving)
@@ -24,7 +32,10 @@ namespace PackageDevice
             var message = new Message(Encoding.UTF8.GetBytes(json));
             message.Properties.Add("isMoving", isMoving.ToString());
 
-            await _deviceClient.SendEventAsync(message);
+            if (!_isLocalOnly)
+            {
+                await _deviceClient.SendEventAsync(message);
+            }
         }
 
         private void Print(PackageDeviceMovement movement, bool isMoving)
@@ -44,11 +55,11 @@ namespace PackageDevice
             var movement = new PackageDeviceMovement();
             movement.Start.Latitude = start.Latitude;
             movement.Start.Longitude = start.Longitude;
-            movement.Start.Timestamp = departureTime;
+            movement.Start.Timestamp = DateTimeOffset.UtcNow;
 
             movement.End.Latitude = end.Latitude;
             movement.End.Longitude = end.Longitude;
-            movement.End.Timestamp = arrivalTime;
+            movement.End.Timestamp = DateTimeOffset.UtcNow.AddSeconds((arrivalTime - departureTime).TotalSeconds);
 
             Console.WriteLine($"Started package delivery:");
             Console.WriteLine($" from {movement.Start}");
@@ -73,7 +84,11 @@ namespace PackageDevice
                         movement.Current.Timestamp = legs.Summary.DepartureTime.AddMilliseconds(progressTime);
 
                         await SendMovementD2CAsync(movement, isMoving: true);
-                        await Task.Delay(TimeSpan.FromMilliseconds(stepTime.TotalMilliseconds));
+
+                        var timespan = TimeSpan.FromMilliseconds(stepTime.TotalMilliseconds);
+                        Console.WriteLine($"Driving for: {timespan}");
+
+                        await Task.Delay(timespan);
                         progressTime += stepTime.TotalMilliseconds;
                     }
                 }
